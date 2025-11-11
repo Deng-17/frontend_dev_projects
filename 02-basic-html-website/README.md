@@ -12,7 +12,7 @@ A simple multi-page site built from scratch to practice linking, layout, and bas
 
 ## Live Preview
 View the project here:\
-👉🏾 [https://Deng-17.github.io/frontend_dev_projects/02-basic-html-website/](https://Deng-17.github.io/frontend_dev_projects/02-basic-html-website/index.html)
+👉🏾 [Basic HTML Website](https://Deng-17.github.io/frontend_dev_projects/02-basic-html-website/)
 
 ## Tools Used
 - HTML5
