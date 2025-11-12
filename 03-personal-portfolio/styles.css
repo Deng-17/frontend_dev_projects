@@ -1,0 +1,294 @@
+:root {
+    --color-bg: #f6f8fb;
+    --color-surface: #ffffff;
+    --color-primary: #0b7285; /* teal */
+    --color-accent: #ffb703; /* warm accent */
+    --color-text: #0f1720;
+    --radius: 8px;
+    --max-width: 1100px;
+}
+
+/* Dark mode: system preference and manual override
+   - The @media rule will switch variable defaults when the OS prefers dark.
+   - The [data-theme="dark"] selector lets you force dark mode by setting
+     `document.documentElement.setAttribute('data-theme','dark')` or
+     adding `data-theme="dark"` to the <html> element in markup. */
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-bg: #071226;       /* deep blue/near-black background */
+        --color-surface: #071a2a;  /* card surface */
+        --color-primary: #63e6d9;  /* brighter teal for contrast */
+        --color-accent: #ffb703;   /* keep warm accent for highlights */
+        --color-text: #e6f5f7;     /* light text */
+    }
+}
+
+[data-theme="dark"] , html[data-theme="dark"] {
+    --color-bg: #071226;
+    --color-surface: #071a2a;
+    --color-primary: #63e6d9;
+    --color-accent: #ffb703;
+    --color-text: #e6f5f7;
+}
+
+/* Smooth transitions when switching themes */
+body, .wrapper, .page-wrapper, header, main, footer {
+    transition: background-color 220ms ease, color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+/* Box model reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg, var(--color-bg), #eef3f7);
+    color: var(--color-text);
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+
+    /* Make the page area a column flex container so the footer can sit at the
+       bottom whether it appears inside or outside the .wrapper element. */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    padding: 20px;
+    flex: 1 1 auto; /* allow wrapper area to grow */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center the .wrapper horizontally so it keeps a fixed width */
+}
+
+.wrapper {
+    /* Make wrapper take the full available width up to the max-width and
+       prevent it from shrinking below that width when used as a flex child. */
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(15,23,32,0.06);
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto; /* don't allow horizontal/vertical shrink that collapses width */
+}
+
+/* Header / Nav */
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    padding-bottom: 12px;
+}
+
+.logo img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: linear-gradient(135deg,var(--color-primary),var(--color-accent));
+}
+
+header h1 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* gap: 12px; */
+    flex-wrap: wrap;
+}
+nav a {
+    text-decoration: none;
+    color: var(--color-primary);
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+nav a:hover, nav a:focus {
+    background: rgba(11,114,133,0.08);
+    outline: none;
+}
+
+/* Main content */
+main {
+    padding: 18px 0;
+    flex: 1 1 auto; /* allow main content to grow and push footer down */
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
+    gap: 18px;
+}
+
+.column {
+    background: linear-gradient(180deg, rgba(11,114,133,0.1), transparent);
+    padding: 12px;
+    border-radius:10px;
+}
+
+#projects {
+    grid-row: span 2;
+}
+
+#education {
+    grid-row: 1/3;
+    grid-column: 3;
+}
+
+/* Reviews */
+.reviews blockquote {
+    margin: 0 0 12px 0;
+    padding: 12px;
+    border-left: 4px solid var(--color-accent);
+    background: rgba(255,183,3,0.1);
+    border-radius: 6px;
+}
+
+.reviews footer {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    margin-top: 8px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 12px 0;
+    color: var(--color-text);
+    font-size: 0.9rem;
+}
+
+/* Contact form */
+.contact-info form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-info label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.contact-info input[type="text"],
+.contact-info input[type="email"],
+.contact-info textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(15,23,32,0.12);
+    border-radius: 8px;
+    background: #fff;
+    transition: border-color .15s, box-shadow .15s;
+}
+
+.contact-info input:focus, .contact-info textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 14px rgba(11,114,133,0.08);
+    outline: none;
+}
+
+.contact-info button {
+    align-self: flex-start;
+    background: var(--color-primary);
+    color: white;
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.contact-info button:hover {
+    filter: brightness(.97);
+}
+
+/* Projects list */
+dl {
+    margin: 0;
+}
+
+dt {
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+dd {
+    margin: 4px 0 12px 0;
+    color: rgba(15, 23, 32, 0.75);
+}
+
+/* Utility */
+.muted {
+    color: rgba(15, 23, 32, 0.6);
+    font-size: 0.95rem;
+}
+
+/* Media queries - desktop */
+@media (min-width: 700px) {
+    header {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        padding: 18px 12px;
+    }
+
+    header {
+        align-items: center;
+    }
+
+    header h1 {
+        font-size: 1.25rem;
+    }
+
+    nav ul {
+        margin-left: auto;
+    }
+
+    .main-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .column {
+        flex: 1 1 calc(50% - 18px);
+    }
+
+    .reviews {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 18px;
+        margin-top: 12px;
+    }
+
+    .reviews h2 {
+        grid-column: span 3;
+    }
+}
+
+@media (min-width: 1024px) {
+    .column { flex: 1 1 calc(33.333% - 18px); }
+}
+
+/* Accessibility helpers */
+a:focus { outline: 3px solid rgba(11,114,133,0.14); outline-offset: 2px; }
+
+/* small tweaks for projects page */
+.projects h1 { margin-top:0; }
