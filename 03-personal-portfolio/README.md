@@ -1,6 +1,7 @@
 # Personal Portfolio
 This is a CSS-styled version of the previous basic HTML website, with responsive
-layouts, color and typography.
+layouts, color and typography, for the roadmap.sh [Personal Portfolio](https://roadmap.sh/projects/portfolio-website)
+challenge.
 
 ## Overview
 **Goal**: Style the previous basic HTML-only website using various CSS techniques
