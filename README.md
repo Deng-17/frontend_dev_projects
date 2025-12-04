@@ -4,9 +4,7 @@ This repository is a growing collection of my frontend projects.
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## 📂 List of projects
-- [Single-page CV](./01-single-page-cv)
-- [Basic HTML Website](./02-basic-html-website)
-- [Personal Portfolio](./03-personal-portfolio)
+[Single-page CV](https://roadmap.sh/projects/single-page-cv), [Basic HTML Website](https://roadmap.sh/projects/basic-html-website), [Personal Portfolio](https://roadmap.sh/projects/portfolio-website)  
 
 *(More coming soon - stay tuned 🚀)*
 
